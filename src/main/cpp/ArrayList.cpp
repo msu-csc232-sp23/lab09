@@ -77,7 +77,6 @@ ItemType ArrayList<ItemType>::getEntry(int position) const noexcept(false) {
     }  // end if
 }  // end getEntry
 
-// TODO: Task 3
 template<class ItemType>
 void ArrayList<ItemType>::replace(int position, const ItemType &newEntry) noexcept(false) {
     // Enforce precondition
