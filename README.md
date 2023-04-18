@@ -50,7 +50,7 @@ Upon successful completion of this lab, the student has demonstrated their abili
 
 ## Getting Started
 
-After accepting this assignment with the provided [GitHub Classroom Assignment link](https://classroom.github.com/a/OIa6TCZO), clone this repository. If you have cloned the repository from the command line prompt, navigate into the newly created directory
+After accepting this assignment with the provided [GitHub Classroom Assignment link](https://classroom.github.com/a/2oni8d_1), clone this repository. If you have cloned the repository from the command line prompt, navigate into the newly created directory
 
 ```bash
 cd lab09-github-username
