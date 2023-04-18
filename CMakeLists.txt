@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.16.3-3.24.2)
-# TODO: Search and replace labhwn with appropriate values in this file
-project(labhwn)
+project(lab09)
 
 if (CMAKE_VERSION GREATER_EQUAL "3.24.0")
     cmake_policy(SET CMP0135 NEW)
@@ -30,11 +29,18 @@ message("CMAKE_CXX_FLAGS =${CMAKE_CXX_FLAGS}")
 
 # GoogleTest requires at least C++11
 set(CMAKE_CXX_STANDARD 17)
-
+set(SRC_BASE_PATH "src/main/cpp")
+set(TEST_BASE_PATH "src/test/cpp")
 # Source sets for targets
-set(SRC_MAIN_FILES src/main/cpp/main.cpp)
-set(SRC_DEMO_FILES src/main/cpp/demo.cpp)
-set(SRC_TEST_FILES src/test/cpp/unit_tests.cpp)
+set(SRC_MAIN_FILES ${SRC_BASE_PATH}/main.cpp ${SRC_BASE_PATH}/ArrayList.cpp ${SRC_BASE_PATH}/PrecondViolatedExcep.cpp)
+set(SRC_DEMO_FILES ${SRC_BASE_PATH}/demo.cpp ${SRC_BASE_PATH}/ArrayList.cpp ${SRC_BASE_PATH}/PrecondViolatedExcep.cpp)
+set(SRC_TEST_FILES
+        ${TEST_BASE_PATH}/unit_tests.cpp
+        ${SRC_BASE_PATH}/ArrayList.cpp
+        ${SRC_BASE_PATH}/PrecondViolatedExcep.cpp
+        ${SRC_BASE_PATH}/Node.cpp
+        ${SRC_BASE_PATH}/LinkedList.cpp
+        )
 
 # Setup Google Test
 set(GOOGLE_TEST_ARCHIVE "release-1.11.0")
@@ -66,3 +72,4 @@ target_include_directories(google-tests PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include
 add_custom_command(TARGET main PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/src/main/resources/main_data.txt ${CMAKE_CURRENT_BINARY_DIR})
 add_custom_command(TARGET demo PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/src/main/resources/demo_data.txt ${CMAKE_CURRENT_BINARY_DIR})
 add_custom_command(TARGET google-tests PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/src/test/resources/test_data.txt ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_command(TARGET google-tests PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/include/csc232.h ${CMAKE_CURRENT_BINARY_DIR})

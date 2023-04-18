@@ -10,10 +10,21 @@
 #ifndef MSU_CSC232_EXPANDED_TEMPLATES_H_
 #define MSU_CSC232_EXPANDED_TEMPLATES_H_
 
-/* Include class template implementation files as needed */
+#include <string>
 
+/* Include class template implementation files as needed */
+#include "ArrayList.cpp"
+#include "LinkedList.cpp"
+#include "Node.cpp"
 
 /* Declare template usage next */
+template
+class ArrayList<std::string>;
 
+template
+class LinkedList<std::string>;
+
+template
+class Node<std::string>;
 
 #endif // MSU_CSC232_EXPANDED_TEMPLATES_H_

@@ -25,6 +25,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <cctype>
 #include <climits>
 #include <cmath>
 #include <cstdlib>
@@ -46,7 +47,7 @@
 
 #include "expanded_templates.h"
 
- /** Common iostream objects */
+/** Common iostream objects */
 using std::cerr;
 using std::cin;
 using std::cout;
@@ -61,32 +62,29 @@ using std::setw;
 /**
  * @brief Common namespace for CSC232 identifiers.
  */
-namespace csc232
-{
+namespace csc232 {
     // Add any user-defined functions prescribed in your assignment below
 
     // DO NOT Modify anything below this line
 
-    int Preamble(int argc, char* argv[]);
+    int Preamble(int argc, char *argv[]);
 
     /**
      * @brief Generate a quasi-random UUID.
      * @return A string representation of a quasi-random UUID.
      */
-    std::string GenerateUuid()
-    {
+    std::string GenerateUuid() {
         static std::random_device random_device;
         static std::mt19937 random_number_generator(random_device());
 
         std::uniform_int_distribution<int> dist(0, 15);
 
-        const char* uuid_alphabet = "0123456789abcdef";
-        const bool dash[] = { false, false, false, false, true, false, true, false,
-                             true, false, true, false, false, false, false, false };
+        const char *uuid_alphabet = "0123456789abcdef";
+        const bool dash[] = {false, false, false, false, true, false, true, false,
+                             true, false, true, false, false, false, false, false};
 
         std::string uuid;
-        for (bool dash_location : dash)
-        {
+        for (bool dash_location: dash) {
             if (dash_location)
                 uuid += "-";
             uuid += uuid_alphabet[dist(random_number_generator)];
